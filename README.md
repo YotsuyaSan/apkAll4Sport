@@ -1,6 +1,6 @@
 # apkAll4Sport
 
-API usage
+APIConnection usage
 
 ```java
 
