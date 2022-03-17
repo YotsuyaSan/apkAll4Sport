@@ -28,4 +28,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.457" />
 
+    <Button
+        android:id="@+id/goToScanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to scanner"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="268dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

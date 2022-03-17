@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/drawable/border.xml" value="0.34" />
+        <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/drawable/box.xml" value="0.34" />
+        <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/activity_login_page.xml" value="0.3625" />
+        <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/activity_qrcode_scanner.xml" value="0.3625" />
         <entry key="..\:/apkAll4Sport/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/apkAll4Sport/app/src/main/res/layout/list_item_produit.xml" value="0.5" />
       </map>

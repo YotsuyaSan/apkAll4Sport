@@ -1,63 +1,55 @@
 package com.example.all4sport;
 
-import static java.sql.DriverManager.println;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.lang.reflect.Array;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.nio.charset.Charset;
-
-import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView testjson;
-    Button button;
+    Button connection_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        this.testjson = (TextView) findViewById(R.id.testjson);
-        this.testjson.setText("woula");
 
-        this.button = (Button) findViewById(R.id.button);
-        this.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String leJSON = null;
+        setContentView(R.layout.activity_login_page);
 
+        this.connection_btn = (Button) findViewById(R.id.btn);
+
+        EditText login = (EditText) findViewById(R.id.login);
+        EditText pwd = (EditText) findViewById(R.id.pwd);
+        
+        this.connection_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String token = null;
                 try {
-                    String url = "http://192.168.81.4:3000/produits";
-
-                    leJSON = APIConnection.get(url);
-
-                    Log.e("aaaaaaa", leJSON);
-                } catch (IOException e){
+                    String url = "http://192.168.81.2:3000/connection/user/" + login + "/pswd/" + pwd;
+                    token = APIConnection.get(url);
+                    switchActivity(token);
+                    Toast toast = Toast.makeText(MainActivity.this, token, Toast.LENGTH_LONG);
+                    toast.show();
+                    Log.e("aaaaaaa", token);
+                } catch (IOException e) {
                     Log.e("OEEEEEEEEEE C'EST LA D", e.toString());
                 }
-
-
             }
         });
 
     }
 
+
+    private void switchActivity(String token) {
+        Intent switchActivityIntent = new Intent(this, QRCodeScanner.class);
+        switchActivityIntent.putExtra("token", token);
+        startActivity(switchActivityIntent);
+    }
 
 }
