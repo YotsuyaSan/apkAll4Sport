@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String token = null;
                 try {
-                    String url = "http://192.168.81.2:3000/connection/user/" + login + "/pswd/" + pwd;
+                    String url = "http://192.168.214.174:3000/connection/user/" + login + "/pswd/" + pwd;
                     token = APIConnection.get(url);
                     switchActivity(token);
                     Toast toast = Toast.makeText(MainActivity.this, token, Toast.LENGTH_LONG);

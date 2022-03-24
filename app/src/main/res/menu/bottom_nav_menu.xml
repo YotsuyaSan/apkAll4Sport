@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  
+    <item
+        android:id="@+id/nav_produits"
+        android:enabled="true"
+        android:title="Produits"
+        android:icon="@drawable/list_products"
+        />
+    <item
+        android:id="@+id/scanner_button"
+        android:enabled="true"
+        android:title="Scanner"
+        android:icon="@drawable/scanner_icon"
+        />
+    <item
+        android:id="@+id/disconnect_button"
+        android:enabled="true"
+        android:title="Déconnection"
+        android:icon="@drawable/disconnect_icon"
+        />
+
 </menu>

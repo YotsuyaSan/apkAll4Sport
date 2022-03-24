@@ -30,9 +30,5 @@ public class PageProduit extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_page_produit);
-
-
-
-
     }
 }
