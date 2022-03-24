@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
                     switchActivity(token);
                     Toast toast = Toast.makeText(MainActivity.this, token, Toast.LENGTH_LONG);
                     toast.show();
-                    Log.e("aaaaaaa", token);
+                    Log.e("Token", token);
                 } catch (IOException e) {
-                    Log.e("OEEEEEEEEEE C'EST LA D", e.toString());
+                    Log.e("Error", e.toString());
                 }
             }
         });

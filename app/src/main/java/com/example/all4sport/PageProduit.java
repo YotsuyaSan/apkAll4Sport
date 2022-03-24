@@ -24,9 +24,9 @@ public class PageProduit extends AppCompatActivity {
         try {
             String url = "http://192.168.81.2:3000/produits/get/" + str;
             product = APIConnection.get(url);
-            Log.e("aaaaaaa", product);
+            Log.e("Produit: ", product);
         } catch (IOException e) {
-            Log.e("OEEEEEEEEEE C'EST LA D", e.toString());
+            Log.e("Error: ", e.toString());
         }
 
         setContentView(R.layout.activity_page_produit);
