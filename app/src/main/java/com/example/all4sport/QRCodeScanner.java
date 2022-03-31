@@ -34,10 +34,10 @@ public class QRCodeScanner extends AppCompatActivity implements NavigationBarVie
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.scanner_button);
-
     }
 
     Scanner scannerFragment = new Scanner();
+    Localisation localisationFragment = new Localisation();
     ListeProduits listeProduitsFragment = new ListeProduits();
 
 
@@ -51,6 +51,8 @@ public class QRCodeScanner extends AppCompatActivity implements NavigationBarVie
             case R.id.nav_produits:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, listeProduitsFragment).commit();
                 return true;
+            case R.id.disconnect_button:
+                switchActivity();
         }
         return true;
     }
@@ -58,5 +60,11 @@ public class QRCodeScanner extends AppCompatActivity implements NavigationBarVie
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
+    }
+
+    private void switchActivity() {
+        Intent switchActivityIntent = new Intent(this, MainActivity.class);
+        switchActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(switchActivityIntent);
     }
 }

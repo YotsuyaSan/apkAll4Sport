@@ -1,15 +1,18 @@
 package com.example.all4sport;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.camera.core.Camera;
 import androidx.camera.core.CameraInfo;
 import androidx.camera.core.CameraInfoUnavailableException;
 import androidx.camera.core.CameraProvider;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.Preview;
+import androidx.camera.core.SurfaceRequest;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -17,6 +20,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
 
 import android.view.LayoutInflater;
+import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -25,19 +29,21 @@ import com.google.zxing.integration.android.IntentIntegrator;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Scanner#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Scanner extends Fragment implements CameraProvider {
+public class Scanner extends Fragment implements Preview.SurfaceProvider, CameraProvider {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     // TODO: Rename and change types of parameters
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
+    Executor mGlExecutor;
 
     public Scanner() {
         // Required empty public constructor
@@ -58,9 +64,25 @@ public class Scanner extends Fragment implements CameraProvider {
         return fragment;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+      /*  IntentIntegrator intentIntegrator = new IntentIntegrator(this.getActivity()).forSupportFragment(this);
+        intentIntegrator.setPrompt("");
+        intentIntegrator.setCaptureActivity(CaptureActivityPortrait.class);
+
+        intentIntegrator.setOrientationLocked(false);
+        intentIntegrator.initiateScan();
+*/
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.P)
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+
+        View view = inflater.inflate(R.layout.fragment_scanner, container, false);
 
         cameraProviderFuture = ProcessCameraProvider.getInstance(getContext());
 
@@ -73,25 +95,10 @@ public class Scanner extends Fragment implements CameraProvider {
                 // This should never be reached.
             }
         }, ContextCompat.getMainExecutor(getContext()));
-
-      /*  IntentIntegrator intentIntegrator = new IntentIntegrator(this.getActivity()).forSupportFragment(this);
-        intentIntegrator.setPrompt("");
-        intentIntegrator.setCaptureActivity(CaptureActivityPortrait.class);
-
-        intentIntegrator.setOrientationLocked(false);
-        intentIntegrator.initiateScan();
-*/
-
-
+        return view;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_scanner, container, false);
-    }
-
+    @RequiresApi(api = Build.VERSION_CODES.P)
     void bindPreview(@NonNull ProcessCameraProvider cameraProvider) {
         Preview preview = new Preview.Builder()
                 .build();
@@ -100,7 +107,7 @@ public class Scanner extends Fragment implements CameraProvider {
                 .requireLensFacing(CameraSelector.LENS_FACING_BACK)
                 .build();
 
-        preview.setSurfaceProvider();
+        preview.setSurfaceProvider(getContext().getMainExecutor(), null);
 
         Camera camera = cameraProvider.bindToLifecycle((LifecycleOwner)this, cameraSelector, preview);
     }
@@ -114,5 +121,10 @@ public class Scanner extends Fragment implements CameraProvider {
     @Override
     public List<CameraInfo> getAvailableCameraInfos() {
         return null;
+    }
+
+    @Override
+    public void onSurfaceRequested(@NonNull SurfaceRequest request) {
+
     }
 }

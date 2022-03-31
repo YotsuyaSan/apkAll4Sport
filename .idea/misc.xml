@@ -6,15 +6,22 @@
         <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/drawable-anydpi/list_products.xml" value="0.341" />
         <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/drawable/border.xml" value="0.34" />
         <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/drawable/box.xml" value="0.34" />
+        <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/drawable/box2.xml" value="0.3635" />
+        <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/drawable/box3.xml" value="0.3635" />
         <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/drawable/rounded_border.xml" value="0.34" />
         <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/activity_login_page.xml" value="0.33" />
         <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/activity_page_produit.xml" value="0.1782051282051282" />
         <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/activity_qrcode_scanner.xml" value="0.3625" />
         <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/capture.xml" value="0.2564102564102564" />
         <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/fragment_liste_produits.xml" value="0.2564102564102564" />
+        <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/fragment_localisation.xml" value="0.33" />
         <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/fragment_q_r_code_scanner.xml" value="0.29743589743589743" />
         <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/fragment_scanner.xml" value="0.3418803418803419" />
+        <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/item_view.xml" value="0.75" />
+        <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/layout/list_item_produit.xml" value="0.22" />
         <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/menu/bottom_nav_menu.xml" value="0.29743589743589743" />
+        <entry key="..\:/Users/Zacca/apkAll4Sport/app/src/main/res/xml/provider_paths.xml" value="0.2264957264957265" />
         <entry key="..\:/apkAll4Sport/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/apkAll4Sport/app/src/main/res/layout/list_item_produit.xml" value="0.5" />
       </map>

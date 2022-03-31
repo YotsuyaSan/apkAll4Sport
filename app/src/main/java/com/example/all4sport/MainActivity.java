@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,15 +33,24 @@ public class MainActivity extends AppCompatActivity {
         
         this.connection_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String token = null;
+                String res;
                 try {
-                    String url = "http://192.168.214.174:3000/connection/user/" + login + "/pswd/" + pwd;
-                    token = APIConnection.get(url);
-                    switchActivity(token);
-                    Toast toast = Toast.makeText(MainActivity.this, token, Toast.LENGTH_LONG);
-                    toast.show();
+                    String url = "http://192.168.81.2:3000/connection/user/" + login.getText() + "/pswd/" + pwd.getText();
+                    res = APIConnection.get(url);
+
+                    JSONArray mJsonArray = new JSONArray(res);
+                    JSONObject mJsonObject = mJsonArray.getJSONObject(0);
+
+                    String token = mJsonObject.getString("token");
+                    if (!token.equals("null")) {
+                        switchActivity(token);
+                    } else {
+                        Toast toto = Toast.makeText( MainActivity.this, "Identifiant ou mot de passe incorrect", Toast.LENGTH_LONG);
+                        toto.show();
+                    }
+
                     Log.e("Token", token);
-                } catch (IOException e) {
+                } catch (IOException | JSONException e) {
                     Log.e("Error", e.toString());
                 }
             }
